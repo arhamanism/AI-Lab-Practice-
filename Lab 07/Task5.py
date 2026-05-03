@@ -18,3 +18,127 @@ function solve_exam_schedule() using the OR-Tools CP-SAT solver. The implementat
 define variables, enforce all constraints including conflict, spacing, ordering, and capacity
 constraints, and output a valid exam schedule assigning a slot to each subject.
 """
+from ortools.sat.python import cp_model
+
+
+def solve_exam_schedule():
+    model = cp_model.CpModel()
+
+    # -------------------------
+    # 1. VARIABLES
+    # -------------------------
+    subjects = ["Math", "Physics", "AI", "OS", "DB"]
+
+    exam = {
+        s: model.NewIntVar(1, 6, s) for s in subjects
+    }
+
+    Math = exam["Math"]
+    Physics = exam["Physics"]
+    AI = exam["AI"]
+    OS = exam["OS"]
+    DB = exam["DB"]
+
+    # -------------------------
+    # 2. CONFLICT CONSTRAINTS
+    # -------------------------
+    model.Add(Math != Physics)
+    model.Add(AI != OS)
+    model.Add(OS != DB)
+
+    # -------------------------
+    # 3. ORDERING CONSTRAINT
+    # -------------------------
+    model.Add(Math < DB)
+
+    # -------------------------
+    # 4. GAP CONSTRAINT (AI & OS)
+    # -------------------------
+    diff = model.NewIntVar(0, 6, "diff")
+    model.AddAbsEquality(diff, AI - OS)
+    model.Add(diff >= 2)
+
+    # -------------------------
+    # 5. SLOT CAPACITY CONSTRAINT
+    # (max 2 exams per slot)
+    # -------------------------
+    slots = range(1, 7)
+
+    slot_counts = []
+
+    for s in slots:
+        b_vars = []
+
+        for subj in subjects:
+            b = model.NewBoolVar(f"{subj}_in_{s}")
+
+            model.Add(exam[subj] == s).OnlyEnforceIf(b)
+            model.Add(exam[subj] != s).OnlyEnforceIf(b.Not())
+
+            b_vars.append(b)
+
+        count = model.NewIntVar(0, 5, f"count_slot_{s}")
+        model.Add(count == sum(b_vars))
+
+        model.Add(count <= 2)
+
+        slot_counts.append(count)
+
+    # -------------------------
+    # 6. DAY CONSTRAINTS
+    # -------------------------
+    # Day 1: slots 1,2
+    # Day 2: slots 3,4
+    # Day 3: slots 5,6
+
+    def day_constraint(slot_list):
+        b_vars = []
+
+        for subj in subjects:
+            for s in slot_list:
+                b = model.NewBoolVar(f"{subj}_in_day_{slot_list}_{s}")
+
+                model.Add(exam[subj] == s).OnlyEnforceIf(b)
+                model.Add(exam[subj] != s).OnlyEnforceIf(b.Not())
+
+                b_vars.append(b)
+
+        count = model.NewIntVar(0, 5, "day_count")
+        model.Add(count == sum(b_vars))
+
+        model.Add(count <= 2)
+
+    day_constraint([1, 2])
+    day_constraint([3, 4])
+    day_constraint([5, 6])
+
+    # -------------------------
+    # 7. SOLVER
+    # -------------------------
+    solver = cp_model.CpSolver()
+    solver.parameters.enumerate_all_solutions = True
+
+    # -------------------------
+    # 8. PRINT SOLUTIONS
+    # -------------------------
+    class Printer(cp_model.CpSolverSolutionCallback):
+        def __init__(self, exam_vars):
+            cp_model.CpSolverSolutionCallback.__init__(self)
+            self.exam_vars = exam_vars
+            self.count = 0
+
+        def OnSolutionCallback(self):
+            self.count += 1
+            print(f"\nSolution {self.count}")
+            for s in subjects:
+                print(f"{s}: Slot {self.Value(exam[s])}")
+
+    printer = Printer(exam)
+
+    solver.SearchForAllSolutions(model, printer)
+
+    print("\nTotal solutions:", printer.count)
+
+
+# Run it
+solve_exam_schedule()
