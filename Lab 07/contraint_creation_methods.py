@@ -45,3 +45,6 @@ if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
     print("Factors =", [solver.Value(f) for f in factors])
 else:
     print("No feasible solution found.")
+
+
+
