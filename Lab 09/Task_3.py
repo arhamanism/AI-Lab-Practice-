@@ -46,7 +46,7 @@ for i in range(num_of_sims):
     rainy_days = seq.count("Rainy")
 
     if rainy_days >= 3:
-        num_of_rainydays_greaterthan_three+=1
+        num_of_rainydays_greaterthan_three+=1       
 
 print("probability of having at least 3 rainy days over the 10-day period:", num_of_rainydays_greaterthan_three/num_of_sims)
 #print("->".join(state_seq))

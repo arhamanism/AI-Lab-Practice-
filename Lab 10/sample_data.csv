@@ -1,0 +1,31 @@
+order_id,customer_name,age,gender,city,country,category,product,quantity,unit_price,discount,order_date,status
+1001,Alice Johnson,29,Female,New York,USA,Electronics,Laptop,1,1200.00,0.10,2024-01-05,Delivered
+1002,Bob Smith,34,Male,London,UK,Clothing,Winter Jacket,2,85.50,0.00,2024-01-07,Delivered
+1003,Clara Lee,22,Female,Toronto,Canada,Books,Data Science Handbook,3,45.00,0.05,2024-01-10,Delivered
+1004,David Kim,41,Male,Seoul,South Korea,Electronics,Smartphone,1,950.00,0.15,2024-01-12,Shipped
+1005,Eva Martinez,27,Female,Madrid,Spain,Beauty,Skincare Set,4,32.00,0.00,2024-01-15,Delivered
+1006,Frank Wilson,55,Male,Sydney,Australia,Home,Coffee Maker,1,120.00,0.10,2024-01-18,Cancelled
+1007,Grace Patel,31,Female,Mumbai,India,Clothing,Saree,2,60.00,0.00,2024-01-20,Delivered
+1008,Henry Brown,23,Male,Chicago,USA,Books,Python for Beginners,1,35.00,0.05,2024-01-22,Delivered
+1009,Isla Thompson,38,Female,Auckland,New Zealand,Electronics,Tablet,1,450.00,0.10,2024-01-25,Shipped
+1010,James Garcia,46,Male,Mexico City,Mexico,Home,Air Purifier,1,200.00,0.00,2024-01-28,Delivered
+1011,Karen White,29,Female,Paris,France,Beauty,Perfume,2,75.00,0.20,2024-02-01,Delivered
+1012,Leo Chen,33,Male,Shanghai,China,Electronics,Earbuds,3,80.00,0.00,2024-02-03,Delivered
+1013,Mia Scott,25,Female,Berlin,Germany,Clothing,Leather Boots,1,140.00,0.05,2024-02-06,Shipped
+1014,Noah Davis,52,Male,Dallas,USA,Home,Smart Thermostat,2,95.00,0.10,2024-02-09,Delivered
+1015,Olivia Harris,36,Female,Tokyo,Japan,Books,Machine Learning Guide,2,55.00,0.00,2024-02-12,Cancelled
+1016,Peter Adams,28,Male,Cape Town,South Africa,Electronics,Laptop,1,1100.00,0.15,2024-02-15,Delivered
+1017,Quinn Baker,44,Female,Rome,Italy,Beauty,Makeup Kit,3,50.00,0.00,2024-02-18,Delivered
+1018,Ryan Nelson,39,Male,Toronto,Canada,Clothing,Denim Jeans,2,65.00,0.05,2024-02-21,Shipped
+1019,Sara Mitchell,30,Female,New York,USA,Home,Blender,1,75.00,0.10,2024-02-24,Delivered
+1020,Tom Carter,47,Male,London,UK,Electronics,Smartwatch,1,320.00,0.00,2024-02-27,Delivered
+1021,Uma Perez,26,Female,Buenos Aires,Argentina,Books,Statistics Textbook,1,40.00,0.05,2024-03-01,Delivered
+1022,Victor Hall,35,Male,Lagos,Nigeria,Clothing,Polo Shirt,4,25.00,0.00,2024-03-04,Cancelled
+1023,Wendy Young,43,Female,Sydney,Australia,Beauty,Hair Care Kit,2,45.00,0.10,2024-03-07,Delivered
+1024,Xander King,31,Male,Chicago,USA,Electronics,Monitor,1,380.00,0.05,2024-03-10,Shipped
+1025,Yara Lewis,27,Female,Dubai,UAE,Home,Vacuum Cleaner,1,160.00,0.00,2024-03-13,Delivered
+1026,Zoe Walker,22,Female,Berlin,Germany,Books,Deep Learning Book,1,60.00,0.10,2024-03-16,Delivered
+1027,Aaron Hill,50,Male,Mumbai,India,Electronics,Smart TV,1,700.00,0.15,2024-03-19,Delivered
+1028,Bella Allen,33,Female,Paris,France,Clothing,Summer Dress,3,55.00,0.00,2024-03-22,Shipped
+1029,Carlos Wright,29,Male,Mexico City,Mexico,Home,Desk Lamp,2,30.00,0.05,2024-03-25,Delivered
+1030,Diana Scott,41,Female,New York,USA,Beauty,Nail Polish Set,5,15.00,0.00,2024-03-28,Delivered
